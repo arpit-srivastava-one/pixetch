@@ -60,12 +60,19 @@ const hexs = [
     "#eeaaffff",
 ]
 
+let currentColor = "black";
+
 const colorSelection = document.querySelector(".colors-container");
 
 for (let i = 0; i < hexs.length; i++) {
     const colorOption = document.createElement("div");
     colorOption.classList.add("color");
     colorOption.style.backgroundColor = hexs[i];
+
+    colorOption.addEventListener("click", e => {
+      currentColor = hexs[i];
+    });
+
     colorSelection.appendChild(colorOption);
 }
 
@@ -109,17 +116,15 @@ function rgbToHex(rgb) {
 
   function onMouseMove(e) {
     if (isMouseDown)
-      this.style.backgroundColor = "black";
+      this.style.backgroundColor = currentColor;
   }
 
   let isMouseDown = false;
 
   document.body.addEventListener("mousedown", e => {
-    console.log("start");
     isMouseDown = true;
   });
 
   document.body.addEventListener("mouseup", e => {
-    console.log("end");
     isMouseDown = false;
   });
