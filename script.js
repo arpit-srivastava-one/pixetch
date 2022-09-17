@@ -62,6 +62,7 @@ const hexs = [
 let currentColor = "black";
 let magicMode = false;
 let isMouseDown = false;
+let unitsLength = 8;
 
 const board = document.querySelector(".board");
 
@@ -89,8 +90,7 @@ for (let i = 0; i < hexs.length; i++) {
 
 // START--------------------------Sketching--------------------------
   function createUnits() {
-    let length = 4;
-    let size = length ** 2;
+    let size = unitsLength ** 2;
 
     for (let i = 0; i < size; i++) {
       const unit = document.createElement("div");    
@@ -150,4 +150,10 @@ magicBTN.addEventListener("click", e => {
 newBTN.addEventListener("click", e => {
   removeChildren(board);
   createUnits();
+});
+
+sizeBTN.addEventListener("click", e => {
+  unitsLength++;
+  unitsLength = wrap(unitsLength, 1, 33);
+  sizeBTN.textContent = `${unitsLength} x ${unitsLength}`;
 });

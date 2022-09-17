@@ -34,3 +34,9 @@ function removeChildren(parent) {
         child = parent.lastElementChild;
     }
 }
+
+
+// Reference - https://stackoverflow.com/questions/28313558/how-to-wrap-a-number-into-a-range
+function wrap(value, start, limit) {
+    return start + (value - start) % (limit - start);
+}
