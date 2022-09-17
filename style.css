@@ -13,7 +13,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
 
-    background-color: #D1E4FF;
+    background-color: #fff9d1;
 }
 
 .left-section, .center-section, .right-section {
@@ -27,11 +27,11 @@ body {
 
 .left-section {
     background-color: transparent;
-    gap: 30px;
+    gap: 40px;
 }
 
 .left-section h1 {
-    font-size: 50px;
+    font-size: 75px;
 }
 
 .left-section .options-container {
@@ -41,10 +41,10 @@ body {
 }
 
 .left-section .option {
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 65px;
 
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
     background-color: white;
     border: 5px solid black;
@@ -53,11 +53,11 @@ body {
 }
 
 .left-section .option:hover {
-    background-color: #D1E4FF;
+    background-color: #ffe680;
 }
 
 .left-section .option:active {
-    background-color: #7db3ff;
+    background-color: #ffda46;
 }
 
 .center-section {
@@ -78,8 +78,17 @@ body {
 
 .right-section .colors-container {
     width: 200px;
-    height: 500px;
+    height: 600px;
 
     background-color: white;
     border: 5px solid black;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.right-section .color {
+    width: 50px;
+    height: 50px;
 }

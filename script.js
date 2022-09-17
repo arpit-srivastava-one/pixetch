@@ -1,31 +1,103 @@
-// const hexs = [
-//     "#ff80ed",
-//     "#065535",
-//     "#000000",
-//     "#133337",
-//     "#ffc0cb",
-//     "#ffffff",
-//     "#ffe4e1",
-//     "#008080",
-//     "#ff0000",
-//     "#e6e6fa",
-//     "#ffd700",
-//     "#ffa500",
-//     "#00ffff",
-//     "#ff7373",
-//     "#0000ff",
-//     "#40e0d0",
-//     "#d3ffce",
-//     "#c6e2ff",
-//     "#b0e0e6",
-//     "#f0f8ff",
-// ]
+const hexs = [
+    "#ccccccff",
+    "#e6e6e6ff",
+    "#f2f2f2ff",
+    "#ffffffff",
 
-// const colorSelection = document.querySelector(".colors-selection");
+    "#000000ff",
+    "#1a1a1aff",
+    "#333333ff",
+    "#4d4d4dff",    
 
-// for (let i = 0; i < hexs.length; i++) {
-//     const colorOption = document.createElement("div");
-//     colorOption.classList.add("color");
-//     colorOption.style.backgroundColor = hexs[i];
-//     colorSelection.appendChild(colorOption);
-// }
+    "#ff0000ff",
+    "#ff2a2aff",
+    "#ff5555ff",
+    "#ff8080ff",
+
+    "#ff6600ff",
+    "#ff7f2aff",
+    "#ff9955ff",
+    "#ffb380ff",
+
+    "#ffcc00ff",
+    "#ffd42aff",
+    "#ffdd55ff",
+    "#ffe680ff",
+
+    "#ccff00ff",
+    "#d4ff2aff",
+    "#ddff55ff",
+    "#e5ff80ff",
+
+    "#66ff00ff",
+    "#7fff2aff",
+    "#99ff55ff",
+    "#b3ff80ff",
+
+    "#00ccffff",
+    "#2ad4ffff",
+    "#55ddffff",
+    "#80e5ffff",
+
+    "#0066ffff",
+    "#2a7fffff",
+    "#5599ffff",
+    "#80b3ffff",
+
+    "#0000ffff",
+    "#2a2affff",
+    "#5555ffff",
+    "#8080ffff",
+
+    "#6600ffff",
+    "#7f2affff",
+    "#9955ffff",
+    "#b380ffff",
+
+    "#d42affff",
+    "#dd55ffff",
+    "#e580ffff",
+    "#eeaaffff",
+]
+
+const colorSelection = document.querySelector(".colors-container");
+
+for (let i = 0; i < hexs.length; i++) {
+    const colorOption = document.createElement("div");
+    colorOption.classList.add("color");
+    colorOption.style.backgroundColor = hexs[i];
+
+    colorOption.addEventListener("mouseover", onMouseOver);
+    colorOption.addEventListener("mouseout", onMouseOut);
+
+    colorSelection.appendChild(colorOption);
+}
+
+
+function onMouseOver(e) {
+
+}
+
+function onMouseOut(e) {
+
+}
+
+
+// Reference - https://css-tricks.com/converting-color-spaces-in-javascript/
+function rgbToHex(rgb) {
+    let sep = rgb.indexOf(",") > -1 ? "," : " ";
+    rgb = rgb.substr(4).split(")")[0].split(sep);
+  
+    let r = (+rgb[0]).toString(16),
+        g = (+rgb[1]).toString(16),
+        b = (+rgb[2]).toString(16);
+  
+    if (r.length == 1)
+      r = "0" + r;
+    if (g.length == 1)
+      g = "0" + g;
+    if (b.length == 1)
+      b = "0" + b;
+  
+    return "#" + r + g + b;
+  }
