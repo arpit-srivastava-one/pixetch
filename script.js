@@ -63,6 +63,7 @@ let currentColor = "black";
 let magicMode = false;
 let isMouseDown = false;
 let unitsLength = 8;
+let gridVisible = true;
 
 const board = document.querySelector(".board");
 
@@ -96,6 +97,9 @@ for (let i = 0; i < hexs.length; i++) {
       const unit = document.createElement("div");    
       unit.classList.add("unit");
       unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
+
+      if (gridVisible === false)
+        unit.style.border = "0px solid black";
   
       unit.addEventListener("mousedown", onMouseClick);
       unit.addEventListener("mousemove", onMouseMove);
@@ -136,6 +140,7 @@ for (let i = 0; i < hexs.length; i++) {
 // START--------------------------Buttons--------------------------
 const drawBTN = document.querySelector("#draw");
 const magicBTN = document.querySelector("#magic");
+const gridBTN = document.querySelector("#grid");
 const newBTN = document.querySelector("#new");
 const sizeBTN = document.querySelector("#size");
 
@@ -145,6 +150,18 @@ drawBTN.addEventListener("click", e => {
 
 magicBTN.addEventListener("click", e => {
   magicMode = !magicMode;
+});
+
+gridBTN.addEventListener("click", e => {
+  gridVisible = !gridVisible;
+
+  const units = document.querySelectorAll(".unit");
+  units.forEach(u => {
+    if (gridVisible)
+      u.style.border = "2px solid black";
+    else
+      u.style.border = "0px solid black"
+  })
 });
 
 newBTN.addEventListener("click", e => {
