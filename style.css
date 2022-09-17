@@ -70,6 +70,17 @@ body {
 
     background-color: white;
     border: 10px solid black;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.center-section .unit {
+    background-color: white;
+
+    box-sizing: border-box;
+    border: 2px solid black;
 }
 
 .right-section {

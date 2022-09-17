@@ -101,3 +101,17 @@ function rgbToHex(rgb) {
   
     return "#" + r + g + b;
   }
+
+
+  const board = document.querySelector(".board");
+  const width = 660;
+  const height = 660;
+  let length = 4;
+  let size = length ** 2;
+
+  for (let i = 0; i < size; i++) {
+    const unit = document.createElement("div");
+    unit.classList.add("unit");
+    unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
+    board.appendChild(unit);
+  }
