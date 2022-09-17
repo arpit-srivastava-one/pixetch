@@ -104,10 +104,11 @@ function rgbToHex(rgb) {
   let size = length ** 2;
 
   for (let i = 0; i < size; i++) {
-    const unit = document.createElement("div");
-    
+    const unit = document.createElement("div");    
     unit.classList.add("unit");
     unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
+    
+    unit.addEventListener("mousedown", onMouseClick);
     unit.addEventListener("mousemove", onMouseMove);
 
     board.appendChild(unit);
@@ -117,6 +118,10 @@ function rgbToHex(rgb) {
   function onMouseMove(e) {
     if (isMouseDown)
       this.style.backgroundColor = currentColor;
+  }
+
+  function onMouseClick(e) {
+    this.style.backgroundColor = currentColor;
   }
 
   let isMouseDown = false;
