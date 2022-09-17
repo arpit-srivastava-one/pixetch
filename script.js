@@ -66,20 +66,7 @@ for (let i = 0; i < hexs.length; i++) {
     const colorOption = document.createElement("div");
     colorOption.classList.add("color");
     colorOption.style.backgroundColor = hexs[i];
-
-    colorOption.addEventListener("mouseover", onMouseOver);
-    colorOption.addEventListener("mouseout", onMouseOut);
-
     colorSelection.appendChild(colorOption);
-}
-
-
-function onMouseOver(e) {
-
-}
-
-function onMouseOut(e) {
-
 }
 
 
@@ -111,7 +98,28 @@ function rgbToHex(rgb) {
 
   for (let i = 0; i < size; i++) {
     const unit = document.createElement("div");
+    
     unit.classList.add("unit");
     unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
+    unit.addEventListener("mousemove", onMouseMove);
+
     board.appendChild(unit);
   }
+
+
+  function onMouseMove(e) {
+    if (isMouseDown)
+      this.style.backgroundColor = "black";
+  }
+
+  let isMouseDown = false;
+
+  document.body.addEventListener("mousedown", e => {
+    console.log("start");
+    isMouseDown = true;
+  });
+
+  document.body.addEventListener("mouseup", e => {
+    console.log("end");
+    isMouseDown = false;
+  });

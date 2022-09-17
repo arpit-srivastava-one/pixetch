@@ -81,6 +81,9 @@ body {
 
     box-sizing: border-box;
     border: 2px solid black;
+
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .right-section {
