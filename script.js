@@ -61,8 +61,11 @@ const hexs = [
 ]
 let currentColor = "black";
 let magicMode = false;
-
 let isMouseDown = false;
+
+const board = document.querySelector(".board");
+
+createUnits();
 
 
 // START--------------------------Create Colors--------------------------
@@ -85,24 +88,22 @@ for (let i = 0; i < hexs.length; i++) {
 
 
 // START--------------------------Sketching--------------------------
-  const board = document.querySelector(".board");
-  const width = 660;
-  const height = 660;
-  let length = 4;
-  let size = length ** 2;
+  function createUnits() {
+    let length = 4;
+    let size = length ** 2;
 
-  for (let i = 0; i < size; i++) {
-    const unit = document.createElement("div");    
-    unit.classList.add("unit");
-    unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
-
-    unit.addEventListener("mousedown", onMouseClick);
-    unit.addEventListener("mousemove", onMouseMove);
-    unit.addEventListener("mouseover", onMouseOver);
-
-    board.appendChild(unit);
+    for (let i = 0; i < size; i++) {
+      const unit = document.createElement("div");    
+      unit.classList.add("unit");
+      unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
+  
+      unit.addEventListener("mousedown", onMouseClick);
+      unit.addEventListener("mousemove", onMouseMove);
+      unit.addEventListener("mouseover", onMouseOver);
+  
+      board.appendChild(unit);
+    }
   }
-
 
   function onMouseMove(e) {
     if (isMouseDown)
@@ -135,6 +136,8 @@ for (let i = 0; i < hexs.length; i++) {
 // START--------------------------Buttons--------------------------
 const drawBTN = document.querySelector("#draw");
 const magicBTN = document.querySelector("#magic");
+const newBTN = document.querySelector("#new");
+const sizeBTN = document.querySelector("#size");
 
 drawBTN.addEventListener("click", e => {
   magicMode = false;
@@ -142,4 +145,9 @@ drawBTN.addEventListener("click", e => {
 
 magicBTN.addEventListener("click", e => {
   magicMode = !magicMode;
+});
+
+newBTN.addEventListener("click", e => {
+  removeChildren(board);
+  createUnits();
 });

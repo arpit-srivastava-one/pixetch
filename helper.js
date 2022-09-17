@@ -24,3 +24,13 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
   }
+
+
+// Reference - https://www.geeksforgeeks.org/remove-all-the-child-elements-of-a-dom-node-in-javascript/
+function removeChildren(parent) {
+    let child = parent.lastElementChild;
+    while (child) {
+        parent.removeChild(child);
+        child = parent.lastElementChild;
+    }
+}
