@@ -61,7 +61,10 @@ const hexs = [
 ]
 
 let currentColor = "black";
+let isMouseDown = false;
 
+
+// START--------------------------Create Colors--------------------------
 const colorSelection = document.querySelector(".colors-container");
 
 for (let i = 0; i < hexs.length; i++) {
@@ -75,28 +78,11 @@ for (let i = 0; i < hexs.length; i++) {
 
     colorSelection.appendChild(colorOption);
 }
+// END--------------------------Create Colors--------------------------
 
 
-// Reference - https://css-tricks.com/converting-color-spaces-in-javascript/
-function rgbToHex(rgb) {
-    let sep = rgb.indexOf(",") > -1 ? "," : " ";
-    rgb = rgb.substr(4).split(")")[0].split(sep);
-  
-    let r = (+rgb[0]).toString(16),
-        g = (+rgb[1]).toString(16),
-        b = (+rgb[2]).toString(16);
-  
-    if (r.length == 1)
-      r = "0" + r;
-    if (g.length == 1)
-      g = "0" + g;
-    if (b.length == 1)
-      b = "0" + b;
-  
-    return "#" + r + g + b;
-  }
 
-
+// START--------------------------Sketching--------------------------
   const board = document.querySelector(".board");
   const width = 660;
   const height = 660;
@@ -107,7 +93,7 @@ function rgbToHex(rgb) {
     const unit = document.createElement("div");    
     unit.classList.add("unit");
     unit.style.flex = `1 0 ${(1/Math.sqrt(size)) * 100}%`;
-    
+
     unit.addEventListener("mousedown", onMouseClick);
     unit.addEventListener("mousemove", onMouseMove);
 
@@ -124,8 +110,6 @@ function rgbToHex(rgb) {
     this.style.backgroundColor = currentColor;
   }
 
-  let isMouseDown = false;
-
   document.body.addEventListener("mousedown", e => {
     isMouseDown = true;
   });
@@ -133,3 +117,5 @@ function rgbToHex(rgb) {
   document.body.addEventListener("mouseup", e => {
     isMouseDown = false;
   });
+
+  // END--------------------------Sketching--------------------------
