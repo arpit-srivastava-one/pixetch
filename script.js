@@ -60,7 +60,8 @@ const hexs = [
     "#eeaaffff",
 ]
 let currentColor = "black";
-let lastColor = "black";
+let magicMode = false;
+
 let isMouseDown = false;
 
 
@@ -73,8 +74,8 @@ for (let i = 0; i < hexs.length; i++) {
     colorOption.style.backgroundColor = hexs[i];
 
     colorOption.addEventListener("click", e => {
-      lastColor = currentColor;
       currentColor = hexs[i];
+      magicMode = false;
     });
 
     colorSelection.appendChild(colorOption);
@@ -97,6 +98,7 @@ for (let i = 0; i < hexs.length; i++) {
 
     unit.addEventListener("mousedown", onMouseClick);
     unit.addEventListener("mousemove", onMouseMove);
+    unit.addEventListener("mouseover", onMouseOver);
 
     board.appendChild(unit);
   }
@@ -109,6 +111,14 @@ for (let i = 0; i < hexs.length; i++) {
 
   function onMouseClick(e) {
     this.style.backgroundColor = currentColor;
+  }
+
+  function onMouseOver() {
+    if (magicMode) {
+      let rndIndex = getRandomInt(0, hexs.length);
+      let rndColor = hexs[rndIndex];
+      currentColor = rndColor;
+    }  
   }
 
   document.body.addEventListener("mousedown", e => {
@@ -124,13 +134,12 @@ for (let i = 0; i < hexs.length; i++) {
 
 // START--------------------------Buttons--------------------------
 const drawBTN = document.querySelector("#draw");
-const eraseBTN = document.querySelector("#erase");
+const magicBTN = document.querySelector("#magic");
 
 drawBTN.addEventListener("click", e => {
-  currentColor = lastColor;
+  magicMode = false;
 });
 
-eraseBTN.addEventListener("click", e => {
-  lastColor = currentColor;
-  currentColor = "white";
+magicBTN.addEventListener("click", e => {
+  magicMode = !magicMode;
 });
