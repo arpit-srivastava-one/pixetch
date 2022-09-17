@@ -59,8 +59,8 @@ const hexs = [
     "#e580ffff",
     "#eeaaffff",
 ]
-
 let currentColor = "black";
+let lastColor = "black";
 let isMouseDown = false;
 
 
@@ -73,6 +73,7 @@ for (let i = 0; i < hexs.length; i++) {
     colorOption.style.backgroundColor = hexs[i];
 
     colorOption.addEventListener("click", e => {
+      lastColor = currentColor;
       currentColor = hexs[i];
     });
 
@@ -118,4 +119,18 @@ for (let i = 0; i < hexs.length; i++) {
     isMouseDown = false;
   });
 
-  // END--------------------------Sketching--------------------------
+// END--------------------------Sketching--------------------------
+
+
+// START--------------------------Buttons--------------------------
+const drawBTN = document.querySelector("#draw");
+const eraseBTN = document.querySelector("#erase");
+
+drawBTN.addEventListener("click", e => {
+  currentColor = lastColor;
+});
+
+eraseBTN.addEventListener("click", e => {
+  lastColor = currentColor;
+  currentColor = "white";
+});
