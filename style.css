@@ -13,7 +13,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
 
-    background-color: #fff9d1;
+    background-color: #ffcee0;
 }
 
 .left-section, .center-section, .right-section {
@@ -53,11 +53,11 @@ body {
 }
 
 .left-section .option:hover {
-    background-color: #ffe680;
+    background-color: #ff90b9;
 }
 
 .left-section .option:active {
-    background-color: #ffda46;
+    background-color: #ff6190;
 }
 
 .center-section {

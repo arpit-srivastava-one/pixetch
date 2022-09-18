@@ -1,3 +1,5 @@
+// START--------------------------Initialization--------------------------
+
 const hexs = [
     "#ccccccff",
     "#e6e6e6ff",
@@ -59,6 +61,7 @@ const hexs = [
     "#e580ffff",
     "#eeaaffff",
 ]
+
 let currentColor = "black";
 let magicMode = false;
 let isMouseDown = false;
@@ -67,10 +70,20 @@ let gridVisible = true;
 
 const board = document.querySelector(".board");
 
+// END--------------------------Initialization--------------------------
+
+
+
+// START--------------------------Setup--------------------------
+
 createUnits();
+
+// END--------------------------Setup--------------------------
+
 
 
 // START--------------------------Create Colors--------------------------
+
 const colorSelection = document.querySelector(".colors-container");
 
 for (let i = 0; i < hexs.length; i++) {
@@ -85,11 +98,13 @@ for (let i = 0; i < hexs.length; i++) {
 
     colorSelection.appendChild(colorOption);
 }
+
 // END--------------------------Create Colors--------------------------
 
 
 
 // START--------------------------Sketching--------------------------
+
   function createUnits() {
     let size = unitsLength ** 2;
 
@@ -137,7 +152,9 @@ for (let i = 0; i < hexs.length; i++) {
 // END--------------------------Sketching--------------------------
 
 
+
 // START--------------------------Buttons--------------------------
+
 const drawBTN = document.querySelector("#draw");
 const magicBTN = document.querySelector("#magic");
 const gridBTN = document.querySelector("#grid");
@@ -174,3 +191,5 @@ sizeBTN.addEventListener("click", e => {
   unitsLength = wrap(unitsLength, 1, 33);
   sizeBTN.textContent = `${unitsLength} x ${unitsLength}`;
 });
+
+// END--------------------------Buttons--------------------------
